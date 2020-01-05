@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head  xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="${'node_modules/font-awesome/css/font-awesome.min.css'}" href="../static/node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="${'node_modules/bootstrap/dist/css/bootstrap.min.css'}" href="../static/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="${'local/css/app.css'}" href="../static/local/css/app.css">
+</head>
+<body>
+
+    <div class="match-parent d-flex flex-column ">
+        <div class="x-navbar no-shadow p-2 ">
+            <div class="d-flex align-items-center"> 
+            	<div class="initial mr-2">
+                    <span th:text="${initial}">Au</span>
+                </div>
+                <span th:text="${username}" class="bolder">Aurion</span>
+            </div>
+            <button title="Notifications" class="icon-btn mr-1 mdl-font bold"  data-icon="BellOutline" data-toggle="modal" data-target="#notificationsModal">&#xEA8F;</button>
+        </div>
+        <div class="d-flex v-extend flex-column">
+            <div class="sidebar-menu p-2">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-users-tab" data-toggle="pill" href="#pills-users" role="tab" aria-controls="pills-users" aria-selected="true">Gestion des utilisateurs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Mon compte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Notifications</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="view-menu v-extend p-2">
+                <div class="tab-content v-extend" id="pills-tabContent">
+                    <div class="tab-pane fade show active position-relative v-extend" id="pills-users" role="tabpanel" aria-labelledby="pills-users-tab">
+                        <button data-icon="Plus" class="fab-button mdl-font" data-toggle="modal" data-target="#addUserModal">&#xE109;</button>
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="notificationsModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Notifications</h4>
+                    <button class="close" data-dismiss="modal">
+                        <span style="font-size: 14px;" data-icon="Close" class="mdl-font">&#xE106;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="no-notifications" th:text="#{no.notifications}">Aucune notification pour le moment ...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="addUserModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" >Nouvel utilisateur</h4>
+                    <button class="close" data-dismiss="modal">
+                        <span style="font-size: 14px;" data-icon="Close" class="mdl-font">&#xE106;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/addUser}" method="POST" th:object="${userRegisterForm}">
+                        <div class="form-group">
+                            <label  class="bold" >Noms <span class="text-danger">*</span></label>
+                            <input th:field="*{lastname}" type="text" class="form-control" placeholder="Votre noms" >
+                        </div>
+                        <div class="form-group">
+                                <label  class="bold" >Prénoms</label>
+                                <input th:field="*{firstname}" type="text" class="form-control" placeholder="Votre prénoms">
+                                <small class="form-text text-mute">Ce champ est facultatif</small>
+                        </div>
+                        <div class="row">
+                                <div class="form-group col-6">
+                                        <label  class="bold" >Ville <span class="text-danger">*</span></label>
+                                        <input th:field="*{town}" type="text" class="form-control" placeholder="Votre ville" >
+                                        
+                                </div>
+                                <div class="form-group -col-6">
+                                        <label  class="bold" >Quartier <span class="text-danger">*</span></label>
+                                        <input th:field="*{district}" type="text" class="form-control" placeholder="Votre quartier" >
+                                        
+                                </div>
+                        </div>
+                        <div class="form-group">
+                                <label  class="bold" >Mot de passe <span class="text-danger">*</span></label>
+                                <input th:field="*{password}" type="password" class="form-control" placeholder="Votre mot de passe" >
+                        </div>
+                        <div class="form-group">
+                                <label  class="bold" >Confirmer le mot de passe <span class="text-danger">*</span></label>
+                                <input th:field="*{cpassword}" type="password" class="form-control" placeholder="Confirmer votre mot de passe" >
+                                <small class="form-text text-mute">Renseigner le même mot de passe précédent</small>
+                        </div>
+                        <div class="form-group">
+                                <label  class="bold" >N° de téléphone <span class="text-danger">*</span></label>
+                                <input th:field="*{phoneNumber}" type="tel" class="form-control" placeholder="Votre numéro de téléphone" >
+                                <small class="form-text text-mute" th:text="#{loginform.phonenumber.infos}">Format du numéro: +237 6 xx xx xx xx</small>
+                        </div>
+                        <div class="form-group">
+                                <label  class="bold" >Email</label>
+                                <input th:field="*{email}" type="email" placeholder="Votre email" class="form-control">
+                                <small class="form-text text-mute">Ce champ est facultatif</small>
+                        </div>
+                        <div class="form-group">
+                                <label  class="bold" >Role</label>
+                                <select th:field="*{role}" class="form-control">
+                                    <option value="ROLE_ADMIN">Administrateur</option>
+                                    <option value="ROLE_DECISION_MAKER">Décideur</option>
+                                    <option value="ROLE_DOCTOR">Docteur</option>
+                                    <option value="ROLE_NURSE">Infirmier/Infirmière</option>
+                                    <option value="ROLE_PATIENT" selected>Patient</option>
+                                </select>
+                                
+                        </div>
+                        <button class="btn btn-primary">Ajouter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:src="${'node_modules/jquery/dist/jquery.min.js'}" src="../static/node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- <script th:src="${'node_modules/popper.js/dist/popper.min.js'}" src="../static/node_modules/popper.js/dist/popper.min.js"></script> -->
+    <script th:src="${'node_modules/bootstrap/dist/js/bootstrap.min.js'}" src="../static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

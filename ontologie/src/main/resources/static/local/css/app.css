@@ -1,0 +1,332 @@
+@font-face{
+    font-family: 'mdl';
+    src: url("../fonts/segmdl2.ttf")
+}
+.mdl-font{
+    font-family: "mdl";
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html,body{
+    background-color: rgb(229, 231, 231);
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+/* button{
+    padding: 10px 20px;
+    border: none;
+    background-color:rgb(39, 49, 102);
+    box-shadow: 0px 1px 2px rgb(97, 95, 95);
+    border-radius: 1px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    
+} */
+a{
+	font-size: 12px;
+	color: dodgerblue;
+	text-decoration: none;
+}
+.bold{
+    font-weight: 700
+}
+.medium-shadow{
+    box-shadow: 0px 1px 2px rgb(165, 165, 165);
+}
+.light-shadow{
+    box-shadow: 0px 1px 2px rgb(177, 175, 175);
+}
+.x-navbar{
+    width: 100%;
+    height: 50px;
+    
+    box-shadow: 0px 1px 2px rgb(97, 95, 95);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px
+}
+
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+.text-align-center{
+    text-align: center;
+}
+.match-parent{
+    height: 100%;
+    width: 100%;
+}
+.no-shadow{
+    box-shadow: none;
+}
+.dflex{
+    display: flex
+}
+.jtf-space-around{
+    justify-content: space-around
+}
+.jtf-space-between{
+    justify-content: space-between
+}
+.jtf-center{
+    justify-content: center
+}
+.jtf-end{
+    justify-content: end;
+}
+
+.ali-center{
+    align-items: center;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
+.flex-column{
+    flex-direction: column;
+}
+
+.v-extend{
+    height: 100%;
+}
+.h-extend{
+    width: 100%;
+}
+.min-font-size{
+    font-size: 12px
+}
+.medium-font-size{
+    font-size: 14px
+}
+.main{
+    padding: 15px;
+}
+
+
+.backdrop{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.842);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+
+
+.circle-action{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(35, 78, 172);
+    margin: 0 15px;
+}
+
+.card-view{
+    padding: 7px;
+    max-width: 200px;
+    
+    border-radius: 2px
+}
+.card-view > .card-view-title{
+    font-size: 15px;
+    font-weight: 700
+}
+.card-view > .card-view-body{
+    font-size: 13px;
+    overflow: hidden;
+    max-height: 300px;
+    min-height: 0;
+    margin-top: 15px;
+    
+}
+.scene-3d{
+    height: auto;
+    width: auto;
+    perspective: 200px
+}
+.scene-3d > .container{
+    height: inherit;
+    width: inherit;
+    transform-style: preserve-3d;
+    position: relative;
+}
+.scene-3d > .container >*{
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    transform-origin: 50% 50%;
+    
+}
+
+@keyframes anim{
+    from{
+        transform: rotateX(0) 
+    }
+    100%{
+        transform: rotateX(360deg)
+    }
+    
+}
+@keyframes focus-width-anim{
+    from{
+        width:0
+    }
+    100%{
+        width:100%
+    }
+    
+}
+
+/* .active-ripple{
+    position: relative;
+    overflow: hidden;
+}
+.ripple{
+    position: absolute;
+    transform-origin: 50% 50%;
+    transform: scale(0);
+    opacity: 1;
+    background-color: white;
+    
+}
+@keyframes ripple-anim{
+    from{
+        transform: scale(0);
+        opacity: 1;
+    }
+    to{
+        transform: scale(1.8);
+        opacity: 0;
+    }
+} */
+
+/* SearchBar */
+.search-form{
+    height: 40px;
+    background-color: white;
+    width: 350px;
+    border-radius: 40px;
+    padding: 0 15px;
+         
+}
+
+.search-input{
+    border: none;
+    margin-right: 5px;
+    background: transparent;
+    font-size: 13px;
+    outline: none;
+    box-shadow: none;
+    
+}
+.search-input::placeholder{
+    color: #555
+}
+.search-btn{
+    border: none;
+    background: transparent;
+    outline: none;
+    font-weight: 100;
+}
+
+#search-brand{
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    font-weight: lighter;
+}
+@media screen and (min-width : 800px){
+    .search-form{
+        width: 500px;
+    }
+    
+}
+/* SearchBar */
+
+/* Logo */
+/* #logo{
+    animation: turn 5s linear infinite;
+}
+@keyframes turn{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+} */
+/* Logo */
+
+.icon-btn{
+    border: none;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: transparent;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.icon-btn:hover{
+    background-color: #fff;
+}
+.lang-link{
+    color: #666;
+    font-size: 14px;
+    
+}
+.lang-link:hover{
+    text-decoration: none;
+
+}
+.lang-link.active{
+    color: dodgerblue;
+}
+/* #search-region{
+    background: url("../img/atom.png") no-repeat fixed 50% 15%;
+} */
+.btn-disconnect{
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Fab button */
+.fab-button{
+    width: 50px;
+    height: 50px;
+    border:none;
+    border-radius: 100%;
+    box-shadow: 0 2px 3px #666;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+/* Fab button */
+
+.initial{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: lighter;
+    background-color: #fff;
+    border-radius: 100%;
+    box-shadow: 0 2px 5px #ccc
+}

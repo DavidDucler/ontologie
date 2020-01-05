@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="${'node_modules/font-awesome/css/font-awesome.min.css'}" href="../static/node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="${'node_modules/bootstrap/dist/css/bootstrap.min.css'}" href="../static/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="${'local/css/app.css'}" href="../static/local/css/app.css">
+</head>
+<body>
+    <div class="match-parent d-flex flex-column">
+        <div class="toolbar d-flex align-items-center flex-row-reverse p-2">
+            <button th:attr="title=#{loginform.title}" class="icon-btn mdl-font bold" data-icon="AccountOutline" data-target="#loginModal" data-toggle="modal">&#xE13D;</button>
+            <button title="Notifications" class="icon-btn mr-1 mdl-font bold"  data-icon="BellOutline" data-toggle="modal" data-target="#notificationsModal">&#xEA8F;</button>
+        </div>
+        <div class="v-extend d-flex justify-content-center align-items-center flex-column" id="search-region">
+            <div style="margin-top:-100px">
+                <img id="logo" th:src="${'local/img/atom.png'}" src="../static/local/img/atom.png" alt="">
+            </div>
+            <h2 id="search-brand">O4TBSS Ontology</h2>
+            <form action="#" method="POST" class="search-form d-flex align-items-center shadow-xs"
+                style="box-shadow: 0 2px 23px rgb(128, 128, 128);">
+                <div class="search-container d-flex h-extend">
+                    <input autofocus type="text" th:placeholder="#{searchinput.placeholder}" class="h-extend search-input">
+                    <button class="search-btn mdl-font" style="font-weight: bold;" data-icon="Search">&#xE094;</button>
+                </div>
+            </form>
+            
+        </div>
+        <div class="d-flex justify-content-center align-items-center p-2">
+            <div class="mr-2" ><a th:href="@{/?lang=fr}" class="lang-link">Fr</a></div>
+            <div style="color: rgb(163, 162, 162);">|</div>
+            <div class="ml-2"><a th:href="@{/?lang=en}" class="lang-link">En</a></div>
+        </div>
+    </div>
+    <div class="modal fade" id="loginModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" th:text="#{loginform.title}">Me connecter</h4>
+                    <button class="close" data-dismiss="modal">
+                        <span style="font-size: 14px;" data-icon="Close" class="mdl-font">&#xE106;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/}" method = "POST">
+                        <div class="form-group">
+                            <label for="" class="bold" th:text="#{loginform.label.phonenumberemail}">N° de telephone / Email</label>
+                            <input type="text" class="form-control" name="identifier">
+                            <small class="form-text text-mute" th:text="#{loginform.phonenumber.infos}">Format de numéro: +237 6xxxxxxxx</small>
+                        </div>
+                        <div class="form-group">
+                                <label for="password" class="bold" th:text="#{loginform.label.password}">Mot de passe</label>
+                                <input type="password" class="form-control" name="password">
+                        </div>
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                        <button class="btn btn-primary" th:text="#{loginform.button.login}">Me connecter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="notificationsModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Notifications</h4>
+                        <button class="close" data-dismiss="modal">
+                            <span style="font-size: 14px;" data-icon="Close" class="mdl-font">&#xE106;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="no-notifications" th:text="#{no.notifications}">Aucune notification pour le moment ...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script th:src="${'node_modules/jquery/dist/jquery.min.js'}" src="../static/node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- <script th:src="${'node_modules/popper.js/dist/popper.min.js'}" src="../static/node_modules/popper.js/dist/popper.min.js"></script> -->
+    <script th:src="${'node_modules/bootstrap/dist/js/bootstrap.min.js'}" src="../static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
